@@ -1,0 +1,13 @@
+:root {
+    --color-bg: #C3D9F4;
+    --color-bg2: #E4F2FD;
+    --color-primary: #9197AE;
+    --color-second: #3179b8
+}
+
+.container {
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+}
+

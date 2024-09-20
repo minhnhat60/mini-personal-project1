@@ -144,6 +144,7 @@ const drawCategory = () => {
                 button.addEventListener("click", () => {
                     const value = button.getAttribute("button-category");
                     query.category = value;
+                    console.log(value);
                     drawProducts();
                 });
             })
