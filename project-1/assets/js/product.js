@@ -17,12 +17,15 @@ const query = {
 // Query
 
 // Lấy ra số lượng sản phẩm
-fetchApi(`http://localhost:3000/products`)
-    .then((data) => {
-        const totalPage = Math.ceil(data.length/query.limit)
-        
-        query.totalPage = totalPage;
-    })
+const drawPagination = () => {
+    const api = `http://localhost:3000/products?q=${query.keyword}&_sort=${query.sort}&_order=${query.order}`
+    fetchApi(api)
+        .then((data) => {
+            const totalPage = Math.ceil(data.length/query.limit)
+            
+            query.totalPage = totalPage;
+        })
+}
 // Lấy ra số lượng sản phẩm
 
 // Vẽ ra danh sách sản phẩm
@@ -51,6 +54,8 @@ const drawProducts = () => {
             const elementProduct = document.querySelector("#product");
 
             elementProduct.innerHTML = arrayHTML.join(", ");
+
+            drawPagination();
 
     })
 }
@@ -98,8 +103,6 @@ const sort = document.querySelector("#sort");
 sort.addEventListener("change", (e) => {
     const value = e.target.value
     const [sort, order] = value.split("-");
-    console.log(sort)
-    console.log(order)
 
     query.sort = sort;
     query.order = order;
