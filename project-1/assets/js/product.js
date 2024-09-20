@@ -10,7 +10,9 @@ const query = {
     totalPage: 0,
     keyword: "",
     limit : 4,
-    page: 1
+    page: 1,
+    sort: "",
+    order: ""
 }
 // Query
 
@@ -25,7 +27,7 @@ fetchApi(`http://localhost:3000/products`)
 
 // Vẽ ra danh sách sản phẩm
 const drawProducts = () => {
-    const api = `http://localhost:3000/products?q=${query.keyword}&_page=${query.page}&_limit=${query.limit}`
+    const api = `http://localhost:3000/products?q=${query.keyword}&_page=${query.page}&_limit=${query.limit}&_sort=${query.sort}&_order=${query.order}`
     fetchApi(api)
         .then((data) => {
             const arrayHTML = data.map((item) => (
@@ -90,3 +92,17 @@ buttonPrev.addEventListener("click", () => {
     }
 })
 // Phân trang sản phẩm
+
+// Sort
+const sort = document.querySelector("#sort");
+sort.addEventListener("change", (e) => {
+    const value = e.target.value
+    const [sort, order] = value.split("-");
+    console.log(sort)
+    console.log(order)
+
+    query.sort = sort;
+    query.order = order;
+    drawProducts();
+})
+// Sort

@@ -96,3 +96,19 @@
     font-weight: 600;
 }
 /* End Pagination */
+
+/* Sort */
+.sort {
+    height: 42px;
+    padding: 0 15px;
+    border-radius: 5px;
+    border: 1px solid #dedede;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.sort:hover {
+    color: royalblue;
+    border-color: royalblue;
+}
+/* End Sort */
