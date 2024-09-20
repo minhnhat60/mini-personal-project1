@@ -112,3 +112,26 @@
     border-color: royalblue;
 }
 /* End Sort */
+
+/* Category */
+.category {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.category__item {
+    background: royalblue;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.category__item:hover {
+    color: aliceblue;
+}
+/* End Category */

@@ -12,13 +12,18 @@ const query = {
     limit : 4,
     page: 1,
     sort: "",
-    order: ""
+    order: "",
+    category: ""
 }
 // Query
 
 // Lấy ra số lượng sản phẩm
 const drawPagination = () => {
-    const api = `http://localhost:3000/products?q=${query.keyword}&_sort=${query.sort}&_order=${query.order}`
+    let stringCategory = "";
+    if(query.category) {
+        stringCategory = `&category=${query.category}`
+    }
+    const api = `http://localhost:3000/products?q=${query.keyword}&_sort=${query.sort}&_order=${query.order}${stringCategory}`
     fetchApi(api)
         .then((data) => {
             const totalPage = Math.ceil(data.length/query.limit)
@@ -30,7 +35,12 @@ const drawPagination = () => {
 
 // Vẽ ra danh sách sản phẩm
 const drawProducts = () => {
-    const api = `http://localhost:3000/products?q=${query.keyword}&_page=${query.page}&_limit=${query.limit}&_sort=${query.sort}&_order=${query.order}`
+    let stringCategory = "";
+    if(query.category) {
+        stringCategory = `&category=${query.category}`
+    }
+
+    const api = `http://localhost:3000/products?q=${query.keyword}&_page=${query.page}&_limit=${query.limit}&_sort=${query.sort}&_order=${query.order}${stringCategory}`
     fetchApi(api)
         .then((data) => {
             const arrayHTML = data.map((item) => (
@@ -53,7 +63,7 @@ const drawProducts = () => {
 
             const elementProduct = document.querySelector("#product");
 
-            elementProduct.innerHTML = arrayHTML.join(", ");
+            elementProduct.innerHTML = arrayHTML.join(" ");
 
             drawPagination();
 
@@ -109,3 +119,36 @@ sort.addEventListener("change", (e) => {
     drawProducts();
 })
 // Sort
+
+// Category
+const drawCategory = () => {
+
+    const api = `http://localhost:3000/category`
+    fetchApi(api)
+        .then((data) => {
+            const arrayHTML = data.map((item) => (
+                `
+                    <div class="category__item" button-category="${item}">
+                        ${item}
+                    </div>
+
+                `
+            ))
+
+            const elementCategory = document.querySelector("#category");
+
+            elementCategory.innerHTML = arrayHTML.join("");
+
+            const buttonCategory = document.querySelectorAll("[button-category]");
+            buttonCategory.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const value = button.getAttribute("button-category");
+                    query.category = value;
+                    drawProducts();
+                });
+            })
+    })
+}
+
+drawCategory()
+// Category
