@@ -7,13 +7,25 @@ const fetchApi = async (api) => {
 
 // Query
 const query = {
-    keyword : ""
+    totalPage: 0,
+    keyword: "",
+    limit : 4,
+    page: 1
 }
 // Query
 
+// Lấy ra số lượng sản phẩm
+fetchApi(`http://localhost:3000/products`)
+    .then((data) => {
+        const totalPage = Math.ceil(data.length/query.limit)
+        
+        query.totalPage = totalPage;
+    })
+// Lấy ra số lượng sản phẩm
+
 // Vẽ ra danh sách sản phẩm
 const drawProducts = () => {
-    const api = `http://localhost:3000/products?q=${query.keyword}`
+    const api = `http://localhost:3000/products?q=${query.keyword}&_page=${query.page}&_limit=${query.limit}`
     fetchApi(api)
         .then((data) => {
             const arrayHTML = data.map((item) => (
@@ -56,3 +68,25 @@ formSearch.addEventListener("submit", (event) => {
     drawProducts();
 })
 // Tìm kiếm sản phẩm
+
+// Phân trang sản phẩm
+const paginationNumber = document.querySelector("#pagination-number");
+const buttonNext = document.querySelector("#pagination-next");
+const buttonPrev = document.querySelector("#pagination-prev");
+
+buttonNext.addEventListener("click", () => {
+    if(query.page < query.totalPage) {
+        query.page = query.page + 1
+        drawProducts();
+        paginationNumber.innerHTML = query.page;  
+    }
+})
+
+buttonPrev.addEventListener("click", () => {
+    if(query.page > 1) {
+        query.page = query.page - 1
+        drawProducts();
+        paginationNumber.innerHTML = query.page;
+    }
+})
+// Phân trang sản phẩm
