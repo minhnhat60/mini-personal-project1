@@ -79,3 +79,20 @@
     cursor: pointer;
 }
 /* End Form-search */
+
+/* Pagination */
+.pagination button {
+    height: 42px;
+    padding: 0 15px;
+    border-radius: 5px 15px 5px;
+    cursor: pointer;
+}
+
+.pagination span {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+/* End Pagination */
