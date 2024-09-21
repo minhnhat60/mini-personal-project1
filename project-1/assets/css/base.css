@@ -2,7 +2,8 @@
     --color-bg: #C3D9F4;
     --color-bg2: #E4F2FD;
     --color-primary: #9197AE;
-    --color-second: #3179b8
+    --color-second: #3179b8;
+    --color-main: #232323;
 }
 
 .container {
@@ -10,4 +11,31 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+/* button cta */
+.cta {
+    padding: 16px 32px;
+    color: #637498;
+    background-color: transparent;
+    border: 1px solid rgba(99, 116, 152, 0.4);
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-top: 32px;
+    cursor: pointer;
+    box-shadow: inset 0px 0px 0px rgba(99, 116, 152, 0.2);
+    transition: all 0.4s ease;
+}
+.cta:hover {
+    border: 1px solid rgba(99, 116, 152, 0.1);
+    box-shadow: inset 0px -80px 0px rgba(99, 116, 152, 0.1);
+    transform: translateY(-5px);
+}
+@media screen and (max-width: 799px) {
+    .cta {
+        margin-top: 16px;
+}
+}
+/* button cta */
 

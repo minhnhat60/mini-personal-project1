@@ -48,13 +48,13 @@ const drawProducts = () => {
                 <div class="product__item">
                     <div class="product__image">
                         <img src="${item.thumbnail}" alt="${item.title}">
-                        <div class="product__discount">${item.discountPercentage}</div>
+                        <div class="product__discount">${item.discountPercentage}%</div>
                     </div>
                     <div class="product__content">
                         <div class="product__title">${item.title}</div>
                         <div class="product__info">
                             <div class="product__price">${item.price}$</div>
-                            <div class="product__stock">${item.stock}</div>
+                            <div class="product__stock">${item.stock}sp</div>
                         </div>
                     </div>
                 </div>
