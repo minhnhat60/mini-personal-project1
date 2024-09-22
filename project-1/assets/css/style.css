@@ -483,7 +483,7 @@ body {
 
 /* section3 */
 .section3 {
-    background-image: url(../images/image-sec2.webp);
+    /* background-image: url(../images/image-sec2.webp); */
     padding: 120px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -493,7 +493,7 @@ body {
 .section3::before {
     position: absolute;
     content: "";
-    background: #00000026;
+    background: #ebe8e826;
     top: 0;
     left: 0;
     width: 100%;
